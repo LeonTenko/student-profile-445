@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import Student from './components/Student'
 
 function App() {
   const [studentData, setStudentData] = React.useState([]);
@@ -31,8 +32,17 @@ function App() {
 
   return (
     <div className="App">
-      <p>
-      </p>
+      <Student
+        city="Test City"
+        company="Test Company"
+        email="test@testmail.com"
+        firstName="Johnny"
+        grades={[5, 5, 2]}
+        id="1"
+        lastName="Test"
+        pic="https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasdictablanditiis.jpg"
+        skill="Procrastination"
+      ></Student>
     </div>
   );
 }
