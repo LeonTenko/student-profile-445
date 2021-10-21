@@ -1,27 +1,27 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const vertHeight = "15vh";
+const vertHeight = "10vh";
 
 const useStyles = makeStyles({
   root: {
     minWidth: "100%",
     border: "1px solid black",
-    height: vertHeight,
+    minHeight: vertHeight,
+    height: "auto",
+    display: "flex",
     marginBottom: "1vh"
   },
   gridAvatar: {
+    flex: "1 0",
     border: "1px solid blue",
     display: "flex",
-    height: vertHeight,
-    width: vertHeight,
     justifyContent: "center",
-    alignItems: "center",
-    float: "left",
 
     "& img": {
-      width: "90%",
-      height: "90%",
+      width: "12vh",
+      height: "12vh",
+      margin: "0.5vh",
       objectFit: "contain",
       borderRadius: "50%",
       border: "1px solid #C0C0C0"
@@ -29,9 +29,20 @@ const useStyles = makeStyles({
   },
 
   gridContents: {
+    flex: "4 0",
     minHeight: vertHeight,
     width: "auto",
+    height: "auto",
     border: "1px solid green",
+    fontFamily: "Raleway",
+    "& h1": {
+      marginTop: "0",
+      textTransform: "uppercase",
+      fontSize: "2.2em"
+    },
+    "& p": {
+      margin: "0 2vw"
+    }
   }
 });
 
@@ -63,13 +74,14 @@ const Student = ({
       </div>
 
       <div className={classes.gridContents}>
+        <h1>{firstName} {lastName}</h1>
+        <p>Email: {email}</p>
+        <p>Company: {company}</p>
+        <p>Skill: {skill}</p>
+        <p>Average: {calcAverage({ grades })}</p>
       </div>
 
-      {/* <h1>{firstName} {lastName}</h1>
-      <p>Email: {email}</p>
-      <p>Company: {company}</p>
-      <p>Skill: {skill}</p>
-      <p>Average: {calcAverage({ grades })}</p> */}
+
     </div>
   );
 };
