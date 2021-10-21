@@ -47,6 +47,10 @@ function App() {
     cache: 'default'
   };
 
+  const handleSearch = () => {
+    console.log("stuff changed");
+  };
+
   const classes = useStyles();
 
   const getStudentData = async () => {
@@ -72,7 +76,7 @@ function App() {
       <Card className={classes.mainContents}>
         <CardContent >
           <div className={classes.searchBar}>
-            <TextField fullWidth id="standard-basic" label="Search by name" variant="standard" />
+            <TextField fullWidth id="standard-basic" label="Search by name" variant="standard" onChange={ handleSearch }/>
           </div>
           {studentData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
             return (
