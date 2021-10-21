@@ -2,29 +2,38 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+const vertHeight = "15vh";
+
 const useStyles = makeStyles({
   root: {
     minWidth: "100%",
     border: "1px solid black",
+    height: vertHeight,
     padding: "2vh"
+
   },
   gridAvatar: {
-    width: "100%",
-    height: "100%",
     border: "1px solid blue",
+    display: "flex",
+    height: vertHeight,
+    width: vertHeight,
+    justifyContent: "center",
+    alignItems: "center",
+    float: "left",
+
     "& img": {
-      width: "100%",
-      height: "100%",
+      width: "90%",
+      height: "90%",
       objectFit: "contain",
       borderRadius: "50%",
       border: "1px solid #C0C0C0"
-
     }
   },
+
   gridContents: {
-    width: "auto",
-    height: "100%",
-    border: "1px solid green"
+    minHeight: vertHeight,
+    minWidth: "auto",
+    border: "1px solid green",
   }
 });
 
@@ -49,17 +58,14 @@ const Student = ({
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={0}>
-        <Grid item xs={3} >
-          <div className={classes.gridAvatar}>
-            <img src={pic} alt="avatar" />
-          </div>
-        </Grid>
-        <Grid item xs={9}>
-          <div className={classes.gridContents}>
-          </div>
-        </Grid>
-      </Grid>
+
+      <div className={classes.gridAvatar}>
+        <img src={pic} alt="avatar" />
+      </div>
+
+      <div className={classes.gridContents}>
+      </div>
+
       {/* <h1>{firstName} {lastName}</h1>
       <p>Email: {email}</p>
       <p>Company: {company}</p>
