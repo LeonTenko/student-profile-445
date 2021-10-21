@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 
 const vertHeight = "15vh";
 
@@ -9,8 +8,7 @@ const useStyles = makeStyles({
     minWidth: "100%",
     border: "1px solid black",
     height: vertHeight,
-    padding: "2vh"
-
+    marginBottom: "1vh"
   },
   gridAvatar: {
     border: "1px solid blue",
@@ -32,7 +30,7 @@ const useStyles = makeStyles({
 
   gridContents: {
     minHeight: vertHeight,
-    minWidth: "auto",
+    width: "auto",
     border: "1px solid green",
   }
 });
@@ -47,6 +45,7 @@ const Student = ({
   lastName,
   pic,
   skill }) => {
+
   const classes = useStyles();
 
   const calcAverage = (grades) => {
