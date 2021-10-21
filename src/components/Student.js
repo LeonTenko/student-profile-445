@@ -11,8 +11,8 @@ const Student = ({
   pic,
   skill }) => {
 
-  const calcAverage = (grades = [0]) => {
-    const grd = grades["grades"];
+  const calcAverage = (grades) => {
+    const grd = grades["grades"].map((str) => parseInt(str));
     const sum = grd.reduce((total, num) => total + num);
     const len = grd.length;
     return (sum / len).toFixed(3) + "%";

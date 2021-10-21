@@ -32,17 +32,22 @@ function App() {
 
   return (
     <div className="App">
-      <Student
-        city="Test City"
-        company="Test Company"
-        email="test@testmail.com"
-        firstName="Johnny"
-        grades={[5, 5, 2]}
-        id="1"
-        lastName="Test"
-        pic="https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasdictablanditiis.jpg"
-        skill="Procrastination"
-      ></Student>
+      {studentData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
+        return (
+          <Student
+            key={id}
+            id={id}
+            city={city}
+            company={company}
+            email={email}
+            firstName={firstName}
+            grades={grades}
+            lastName={lastName}
+            pic={pic}
+            skill={skill}
+          ></Student>
+        );
+      })}
     </div>
   );
 }
