@@ -39,6 +39,7 @@ const useStyles = makeStyles({
 
 function App() {
   const [studentData, setStudentData] = React.useState([]);
+  const [outputData, setOutputData] = React.useState([]);
 
   const url = new URL("https://api.hatchways.io/assessment/students");
   const fetchParams = {
@@ -47,8 +48,15 @@ function App() {
     cache: 'default'
   };
 
-  const handleSearch = () => {
-    console.log("stuff changed");
+  const handleSearch = (e) => {
+    const searchParam = e.target.value;
+
+    const newData = studentData.filter((student) => {
+      return student.firstName.toLowerCase().startsWith(searchParam) ||
+        student.lastName.toLowerCase().startsWith(searchParam);
+    });
+
+    setOutputData(newData);
   };
 
   const classes = useStyles();
@@ -68,7 +76,7 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    console.log(studentData);
+    setOutputData(studentData);
   }, [studentData]);
 
   return (
@@ -76,9 +84,9 @@ function App() {
       <Card className={classes.mainContents}>
         <CardContent >
           <div className={classes.searchBar}>
-            <TextField fullWidth id="standard-basic" label="Search by name" variant="standard" onChange={ handleSearch }/>
+            <TextField fullWidth id="standard-basic" label="Search by name" variant="standard" onChange={handleSearch} />
           </div>
-          {studentData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
+          {outputData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
             return (
               <Student
                 key={id}
