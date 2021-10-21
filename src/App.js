@@ -5,6 +5,7 @@ import Student from './components/Student'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import TextField from '@mui/material/TextField';
 
 const useStyles = makeStyles({
   root: {
@@ -67,6 +68,7 @@ function App() {
     <div className={classes.root}>
       <Card className={classes.mainContents}>
         <CardContent >
+          <TextField fullWidth id="standard-basic" label="Standard" variant="standard" />
           {studentData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
             return (
               <Student
