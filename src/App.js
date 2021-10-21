@@ -31,6 +31,9 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(0,0,0,.1)',
       outline: '1px solid slategrey'
     }
+  },
+  searchBar: {
+    paddingBottom: "1vh"
   }
 });
 
@@ -68,7 +71,9 @@ function App() {
     <div className={classes.root}>
       <Card className={classes.mainContents}>
         <CardContent >
-          <TextField fullWidth id="standard-basic" label="Standard" variant="standard" />
+          <div className={classes.searchBar}>
+            <TextField fullWidth id="standard-basic" label="Search by name" variant="standard" />
+          </div>
           {studentData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
             return (
               <Student
