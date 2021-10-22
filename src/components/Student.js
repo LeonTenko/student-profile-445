@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@mui/material/TextField';
 
 const vertHeight = "10vh";
 const imageHeight = "12vh";
@@ -43,6 +44,9 @@ const useStyles = makeStyles({
     },
     "& p": {
       margin: "0 2vw"
+    },
+    "& .MuiTextField-root": {
+      margin: "2vh 2vw",
     }
   },
 
@@ -120,6 +124,7 @@ const Student = ({
             );
           })}
         </div>
+        <TextField id="standard-basic" label="Add a tag" variant="standard" />
       </div>
 
       <div className={classes.gridButton}>
