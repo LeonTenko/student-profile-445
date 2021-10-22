@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const vertHeight = "10vh";
+const imageHeight = "12vh";
 
 const useStyles = makeStyles({
   root: {
@@ -19,8 +20,8 @@ const useStyles = makeStyles({
     justifyContent: "center",
 
     "& img": {
-      width: "12vh",
-      height: "12vh",
+      width: imageHeight,
+      height: imageHeight,
       margin: "0.5vh",
       objectFit: "contain",
       borderRadius: "50%",
@@ -56,8 +57,11 @@ const useStyles = makeStyles({
       color: "#A1A1A1",
       border: "none",
       cursor: "pointer",
-      backgroundColor: "transparent"
-    }
+      backgroundColor: "transparent",
+      "&:hover": {
+        color: "black",
+      }
+    },
   },
   gradeSection: {
 
