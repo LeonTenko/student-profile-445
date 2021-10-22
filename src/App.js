@@ -52,8 +52,8 @@ function App() {
     const searchParam = e.target.value;
 
     const newData = studentData.filter((student) => {
-      return student.firstName.toLowerCase().startsWith(searchParam) ||
-        student.lastName.toLowerCase().startsWith(searchParam);
+      return student.firstName.toLowerCase().startsWith(searchParam.toLowerCase()) ||
+        student.lastName.toLowerCase().startsWith(searchParam.toLowerCase());
     });
 
     setOutputData(newData);

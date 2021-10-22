@@ -64,7 +64,10 @@ const useStyles = makeStyles({
     },
   },
   gradeSection: {
-
+    margin: "1.5vh 0",
+    "& span": {
+      paddingRight: "2vw",
+    }
   }
 });
 
