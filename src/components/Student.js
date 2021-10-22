@@ -72,6 +72,17 @@ const useStyles = makeStyles({
     "& span": {
       paddingRight: "2vw",
     }
+  },
+
+  tagSection: {
+    marginTop: "1.5vh",
+    marginLeft: "2vw",
+    "& span": {
+      padding: "0.5vh",
+      marginRight: "1vw",
+      backgroundColor: "#DCDCDC",
+      borderRadius: "15%"
+    }
   }
 });
 
@@ -123,6 +134,10 @@ const Student = ({
               </p>
             );
           })}
+        </div>
+        <div className={classes.tagSection}>
+          <span>tag1</span>
+          <span>tag2</span>
         </div>
         <TextField id="standard-basic" label="Add a tag" variant="standard" />
       </div>
