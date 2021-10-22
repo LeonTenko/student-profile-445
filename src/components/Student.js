@@ -98,6 +98,7 @@ const Student = ({
   skill }) => {
 
   const [expand, setExpand] = React.useState(false);
+  const [tags, setTags] = React.useState([]);
 
   const classes = useStyles();
 
@@ -110,6 +111,15 @@ const Student = ({
 
   const handleButton = (e) => {
     setExpand(!expand);
+  };
+
+  const handleTag = (e) => {
+    if (e.key === "Enter") {
+      const newTags = [...tags];
+      newTags.push(e.target.value);
+      e.target.value = "";
+      setTags(newTags);
+    }
   };
 
   return (
@@ -136,10 +146,13 @@ const Student = ({
           })}
         </div>
         <div className={classes.tagSection}>
-          <span>tag1</span>
-          <span>tag2</span>
+          {tags.map((tag, index) => {
+            return (
+              <span key={index}>{tag}</span>
+            );
+          })}
         </div>
-        <TextField id="standard-basic" label="Add a tag" variant="standard" />
+        <TextField id="standard-basic" label="Add a tag" variant="standard" onKeyDown={handleTag} />
       </div>
 
       <div className={classes.gridButton}>
