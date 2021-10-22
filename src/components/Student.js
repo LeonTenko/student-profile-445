@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 
   gridContents: {
-    flex: "4 0",
+    flex: "5 0",
     minHeight: vertHeight,
     width: "auto",
     height: "auto",
@@ -42,6 +42,21 @@ const useStyles = makeStyles({
     },
     "& p": {
       margin: "0 2vw"
+    }
+  },
+
+  gridButton: {
+    border: "1px solid pink",
+
+    "& button": {
+      flex: "1 0",
+      display: "flex",
+      justifyContent: "right",
+      fontSize: "2em",
+      color: "#A1A1A1",
+      border: "none",
+      cursor: "pointer",
+      backgroundColor: "transparent"
     }
   }
 });
@@ -66,6 +81,10 @@ const Student = ({
     return (sum / len).toFixed(3) + "%";
   };
 
+  const handleButton = (e) => {
+    console.log("Button Clicked");
+  };
+
   return (
     <div className={classes.root}>
 
@@ -81,6 +100,11 @@ const Student = ({
         <p>Average: {calcAverage({ grades })}</p>
       </div>
 
+      <div className={classes.gridButton}>
+        <button type="button" onClick={handleButton}>
+          <i className="fa fa-plus"></i>
+        </button>
+      </div>
 
     </div>
   );
