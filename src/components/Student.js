@@ -61,6 +61,7 @@ const useStyles = makeStyles({
   }
 });
 
+
 const Student = ({
   city,
   company,
@@ -72,6 +73,8 @@ const Student = ({
   pic,
   skill }) => {
 
+  const [expand, setExpand] = React.useState(false);
+
   const classes = useStyles();
 
   const calcAverage = (grades) => {
@@ -82,7 +85,7 @@ const Student = ({
   };
 
   const handleButton = (e) => {
-    console.log("Button Clicked");
+    setExpand(!expand);
   };
 
   return (
@@ -102,7 +105,7 @@ const Student = ({
 
       <div className={classes.gridButton}>
         <button type="button" onClick={handleButton}>
-          <i className="fa fa-plus"></i>
+          <i className={ expand ? "fa fa-minus" : "fa fa-plus" }></i>
         </button>
       </div>
 
