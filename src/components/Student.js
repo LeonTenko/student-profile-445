@@ -58,9 +58,11 @@ const useStyles = makeStyles({
       cursor: "pointer",
       backgroundColor: "transparent"
     }
+  },
+  gradeSection: {
+
   }
 });
-
 
 const Student = ({
   city,
@@ -81,7 +83,7 @@ const Student = ({
     const grd = grades["grades"].map((str) => parseInt(str));
     const sum = grd.reduce((total, num) => total + num);
     const len = grd.length;
-    return (sum / len).toFixed(3) + "%";
+    return (sum / len).toFixed(2) + "%";
   };
 
   const handleButton = (e) => {
@@ -101,11 +103,21 @@ const Student = ({
         <p>Company: {company}</p>
         <p>Skill: {skill}</p>
         <p>Average: {calcAverage({ grades })}</p>
+        <div className={classes.gradeSection} hidden={!expand}>
+          {grades.map((grade, index) => {
+            return (
+              <p key={index}>
+                <span>Test {index + 1}: </span>
+                <span>{grade}%</span>
+              </p>
+            );
+          })}
+        </div>
       </div>
 
       <div className={classes.gridButton}>
         <button type="button" onClick={handleButton}>
-          <i className={ expand ? "fa fa-minus" : "fa fa-plus" }></i>
+          <i className={expand ? "fa fa-minus" : "fa fa-plus"}></i>
         </button>
       </div>
 
