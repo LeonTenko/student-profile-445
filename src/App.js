@@ -86,7 +86,7 @@ function App() {
           <div className={classes.searchBar}>
             <TextField fullWidth id="standard-basic" label="Search by name" variant="standard" onChange={handleSearch} />
           </div>
-          {outputData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill }, index) => {
+          {outputData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill, tags }, index) => {
             return (
               <Student
                 key={id}
@@ -99,6 +99,9 @@ function App() {
                 lastName={lastName}
                 pic={pic}
                 skill={skill}
+                studentData={studentData}
+                index={index}
+                tags={tags ? tags : []}
               ></Student>
             );
           })}

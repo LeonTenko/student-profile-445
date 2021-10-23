@@ -95,10 +95,13 @@ const Student = ({
   id,
   lastName,
   pic,
-  skill }) => {
+  skill,
+  studentData,
+  index,
+  tags }) => {
 
   const [expand, setExpand] = React.useState(false);
-  const [tags, setTags] = React.useState([]);
+  const [tagz, setTags] = React.useState(tags);
 
   const classes = useStyles();
 
@@ -115,9 +118,12 @@ const Student = ({
 
   const handleTag = (e) => {
     if (e.key === "Enter") {
-      const newTags = [...tags];
+      const newTags = [...tagz];
       newTags.push(e.target.value);
       e.target.value = "";
+
+      const tagIndex = studentData.findIndex(student => student.id === id);
+      studentData[tagIndex].tags = newTags; // <- this right here, officer
       setTags(newTags);
     }
   };
@@ -146,7 +152,7 @@ const Student = ({
           })}
         </div>
         <div className={classes.tagSection}>
-          {tags.map((tag, index) => {
+          {tagz.map((tag, index) => {
             return (
               <span key={index}>{tag}</span>
             );
