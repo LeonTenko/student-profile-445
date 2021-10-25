@@ -13,21 +13,21 @@ const useStyles = makeStyles({
     width: "100vw",
     height: "100vh",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   mainContents: {
     width: "70%",
-    height: "75%",
+    height: "75%"
+  },
+
+  cardContent: {
+    height: "inherit"
   },
 
   searchBar: {
     paddingBottom: "1vh",
     position: "sticky",
-    backgroundColor: "white",
-  },
-
-  cardContent: {
-    height: "100%",
+    backgroundColor: "white"
   },
 
   studentSection: {
@@ -138,8 +138,6 @@ function App() {
         </CardContent>
       </Card>
     </div>
-
-
   );
 }
 

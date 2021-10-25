@@ -8,25 +8,24 @@ const imageHeight = "12vh";
 const useStyles = makeStyles({
   root: {
     minWidth: "100%",
-    border: "1px solid black",
     minHeight: vertHeight,
     height: "auto",
     display: "flex",
     marginBottom: "1vh"
   },
+
   gridAvatar: {
     flex: "1 0",
-    border: "1px solid blue",
     display: "flex",
     justifyContent: "center",
 
     "& img": {
+      border: "1px solid #DCDCDC",
       width: imageHeight,
       height: imageHeight,
       margin: "0.5vh",
       objectFit: "contain",
-      borderRadius: "50%",
-      border: "1px solid #C0C0C0"
+      borderRadius: "50%"
     }
   },
 
@@ -35,7 +34,6 @@ const useStyles = makeStyles({
     minHeight: vertHeight,
     width: "auto",
     height: "auto",
-    border: "1px solid green",
     fontFamily: "Raleway",
     "& h1": {
       marginTop: "0",
@@ -46,13 +44,11 @@ const useStyles = makeStyles({
       margin: "0 2vw"
     },
     "& .MuiTextField-root": {
-      margin: "2vh 2vw",
+      margin: "2vh 2vw"
     }
   },
 
   gridButton: {
-    border: "1px solid pink",
-
     "& button": {
       flex: "1 0",
       display: "flex",
@@ -63,14 +59,15 @@ const useStyles = makeStyles({
       cursor: "pointer",
       backgroundColor: "transparent",
       "&:hover": {
-        color: "black",
+        color: "black"
       }
     },
   },
+
   gradeSection: {
     margin: "1.5vh 0",
     "& span": {
-      paddingRight: "2vw",
+      paddingRight: "2vw"
     }
   },
 
@@ -100,7 +97,7 @@ const Student = ({
   tags }) => {
 
   const [expand, setExpand] = React.useState(false);
-  const [tagz, setTags] = React.useState(tags);
+  const [displayTags, setDisplayTags] = React.useState(tags);
 
   const classes = useStyles();
 
@@ -108,7 +105,7 @@ const Student = ({
     const grd = grades["grades"].map((str) => parseInt(str));
     const sum = grd.reduce((total, num) => total + num);
     const len = grd.length;
-    return (sum / len).toFixed(2) + "%";
+    return (sum / len) + "%";
   };
 
   const handleButton = (e) => {
@@ -117,13 +114,13 @@ const Student = ({
 
   const handleTag = (e) => {
     if (e.key === "Enter") {
-      const newTags = [...tagz];
+      const newTags = [...displayTags];
       newTags.push(e.target.value);
       e.target.value = "";
 
       const tagIndex = studentData.findIndex(student => student.id === id);
-      studentData[tagIndex].tags = newTags; // <- this right here, officer
-      setTags(newTags);
+      studentData[tagIndex].tags = newTags;
+      setDisplayTags(newTags);
     }
   };
 
@@ -151,7 +148,7 @@ const Student = ({
           })}
         </div>
         <div className={classes.tagSection}>
-          {tagz.map((tag, index) => {
+          {displayTags.map((tag, index) => {
             return (
               <span key={index}>{tag}</span>
             );
