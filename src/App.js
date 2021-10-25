@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 function App() {
   const [studentData, setStudentData] = React.useState([]);
   const [outputData, setOutputData] = React.useState([]);
-  // make tag and name search params state vars?
+  const [searchParams, setSearchParams] = React.useState({ name: "", tag: "" });
 
   const url = new URL("https://api.hatchways.io/assessment/students");
   const fetchParams = {
@@ -49,27 +49,14 @@ function App() {
     cache: 'default'
   };
 
-  // use effect every time either changes
-
   const handleNameSearch = (e) => {
     const searchParam = e.target.value;
-    // setSearchByName(searchParam);
-    const newData = studentData.filter((student) => {
-      return student.firstName.toLowerCase().startsWith(searchParam.toLowerCase()) ||
-        student.lastName.toLowerCase().startsWith(searchParam.toLowerCase());
-    });
-
-    setOutputData(newData);
+    setSearchParams({ ...searchParams, name: searchParam });
   };
 
   const handleTagSearch = (e) => {
     const searchParam = e.target.value;
-
-    const newData = studentData.filter((student) => {
-      return searchParam ? student.tags && student.tags.join(" ").toLowerCase().includes(searchParam) : true;
-    });
-
-    setOutputData(newData);
+    setSearchParams({ ...searchParams, tag: searchParam });
   };
 
   const classes = useStyles();
@@ -91,6 +78,22 @@ function App() {
   React.useEffect(() => {
     setOutputData(studentData);
   }, [studentData]);
+
+  React.useEffect(() => {
+    const name = searchParams.name;
+    const tag = searchParams.tag;
+
+    const newData = studentData
+      .filter((student) => {
+        return student.firstName.toLowerCase().startsWith(name.toLowerCase()) ||
+          student.lastName.toLowerCase().startsWith(name.toLowerCase());
+      }).filter((student) => {
+        return tag ? student.tags && student.tags.join(" ").toLowerCase().includes(tag) : true;
+      });
+
+    setOutputData(newData);
+
+  }, [searchParams]);
 
   return (
     <div className={classes.root}>
