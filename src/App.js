@@ -14,11 +14,24 @@ const useStyles = makeStyles({
     height: "100vh",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden"
   },
   mainContents: {
-    minWidth: "60%",
+    width: "70%",
     height: "75%",
+  },
+
+  searchBar: {
+    paddingBottom: "1vh",
+    position: "sticky",
+    backgroundColor: "white",
+  },
+
+  cardContent: {
+    height: "100%",
+  },
+
+  studentSection: {
+    height: "100%",
     overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "0.4em"
@@ -31,9 +44,6 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(0,0,0,.1)',
       outline: '1px solid slategrey'
     }
-  },
-  searchBar: {
-    paddingBottom: "1vh"
   }
 });
 
@@ -98,30 +108,33 @@ function App() {
   return (
     <div className={classes.root}>
       <Card className={classes.mainContents}>
-        <CardContent >
+        <CardContent className={classes.cardContent}>
           <div className={classes.searchBar}>
             <TextField fullWidth label="Search by name" variant="standard" onChange={handleNameSearch} />
             <TextField fullWidth label="Search by tag" variant="standard" onChange={handleTagSearch} />
           </div>
-          {outputData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill, tags }, index) => {
-            return (
-              <Student
-                key={id}
-                id={id}
-                city={city}
-                company={company}
-                email={email}
-                firstName={firstName}
-                grades={grades}
-                lastName={lastName}
-                pic={pic}
-                skill={skill}
-                studentData={studentData}
-                index={index}
-                tags={tags ? tags : []}
-              ></Student>
-            );
-          })}
+          <div className={classes.studentSection}>
+            {outputData.map(({ id, city, company, email, firstName, grades, lastName, pic, skill, tags }, index) => {
+              return (
+                <Student
+                  key={id}
+                  id={id}
+                  city={city}
+                  company={company}
+                  email={email}
+                  firstName={firstName}
+                  grades={grades}
+                  lastName={lastName}
+                  pic={pic}
+                  skill={skill}
+                  studentData={studentData}
+                  index={index}
+                  tags={tags ? tags : []}
+                ></Student>
+              );
+            })}
+          </div>
+
         </CardContent>
       </Card>
     </div>
