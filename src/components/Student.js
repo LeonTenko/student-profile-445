@@ -97,7 +97,6 @@ const Student = ({
   pic,
   skill,
   studentData,
-  index,
   tags }) => {
 
   const [expand, setExpand] = React.useState(false);
